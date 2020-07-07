@@ -1,0 +1,1 @@
+.stretch { width: 100% }

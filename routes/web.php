@@ -14,7 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front.home');
+});
+
+Route::get('category', function () {
+    return view('front.Category');
+});
+
+Route::get('page', function () {
+    return view('front.Page');
+});
+
+Route::get('product', function () {
+    return view('front.ProductSimple');
 });
 
 // Auth::routes();

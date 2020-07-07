@@ -5,33 +5,64 @@
         <script async src="https://cdn.ampproject.org/v0.js"></script>
         <title>@yield('title', config('app.name'))</title>
         <link rel="canonical" href="{{ url()->current() }}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        @yield('amp-components')
         <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
         <style amp-custom>
-            @yield('style')
+            @include('inc.normalize')
 
-            @media(min-width: 320px) {
-                @yield('mw320')
+            @include('inc.styles')
+            @include('inc.background-colors')
+            @include('inc.btn')
+            @include('inc.btn-primary')
+            @include('inc.colors')
+            @include('inc.layout')
+
+            body {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                grid-column-gap: 10px;
+                font-family: Roboto;
             }
 
-            @media(min-width: 375px) {
-                @yield('mw375')
+            body > * {
+                grid-column: span 12;
             }
 
-            @media(min-width: 425px) {
-                @yield('mw425')
+            header {
+                background-color: var(--c1);
+                padding: 12px;
             }
 
-            @media(min-width: 768px) {
-                @yield('mw768')
+            nav {
+                background-color: var(--c2);
+                padding: 0 12px;
             }
 
-            @media(min-width: 1024px) {
-                @yield('mw1024')
+            nav ul {
+                display: flex;
+                list-style: none;
+                margin: 6px 0;
+                padding: 0;
             }
 
-            @media(min-width: 1440px) {
-                @yield('mw1440')
+            nav ul li {
+                margin-right: 5px;
+            }
+
+            main {
+                padding: 0 12px;
+            }
+
+            aside {
+                padding: 0 12px;
+            }
+
+            footer {
+                color: #fff;
+                background-color: var(--c1);
+                padding: 12px;
             }
         </style>
     </head>
